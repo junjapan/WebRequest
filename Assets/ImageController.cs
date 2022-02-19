@@ -25,10 +25,16 @@ public class ImageController : MonoBehaviour
         {
             Texture texture = DownloadHandlerTexture.GetContent(uwr);
 
-            Sprite sp = Sprite.Create((Texture2D)texture,
+            //spriteは中心の概念（アンカー）がある。canvasはスプライトなので。
+            Sprite sp = Sprite.Create(
+                (Texture2D)texture,
+                //元々のtextureのどの部分を使うか
                 new Rect(0,0,texture.width,texture.height),
+                //真ん中を示す。ピボット。
                 new Vector2(0.5f,0.5f)
                 );
+
+            sp.name = "man";
 
             Image image = GetComponent<Image>();
 
